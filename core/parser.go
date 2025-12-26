@@ -7,7 +7,6 @@ import (
 
 	"github.com/Wsine/feishu2md/utils"
 	"github.com/chyroc/lark"
-	"github.com/olekukonko/tablewriter"
 )
 
 type Parser struct {
@@ -96,20 +95,6 @@ var DocxCodeLang2MdStr = map[lark.DocxCodeLanguage]string{
 	lark.DocxCodeLanguageVisual:       "vbnet",
 	lark.DocxCodeLanguageXML:          "xml",
 	lark.DocxCodeLanguageYAML:         "yaml",
-}
-
-func renderMarkdownTable(data [][]string) string {
-	builder := &strings.Builder{}
-	table := tablewriter.NewWriter(builder)
-	table.SetCenterSeparator("|")
-	table.SetAutoWrapText(false)
-	table.SetAutoFormatHeaders(false)
-	table.SetAutoMergeCells(false)
-	table.SetBorders(tablewriter.Border{Left: true, Top: false, Right: true, Bottom: false})
-	table.SetHeader(data[0])
-	table.AppendBulk(data[1:])
-	table.Render()
-	return builder.String()
 }
 
 // =============================================================
